@@ -137,26 +137,6 @@ We've also written about some of the code used in the storage service:
 
 You can see a list of open issues for the storage service [in the wellcomecollection/platform repo](https://github.com/wellcomecollection/platform/issues?q=is%3Aissue%20is%3Aopen%20label%3A%22%F0%9F%93%A6%20Storage%20service%22).
 
-
-## Releasing
-
-```sh
-# Ensure you have the correct AWS credentials in scope
-# before running!
-
-# build and publish apps
-./publish_all.sh
-
-# set up release
-./docker_run.py --aws --root -- -it wellcome/release_tooling:119 prepare
-./docker_run.py --aws --root -- -it wellcome/release_tooling:119 deploy
-
-# cd terraform stack (stack_staging/stack_prod)
-
-terraform init
-terraform apply
-```
-
 ## License
 
-All the code in this repo is available under an MIT license.
+MIT.
