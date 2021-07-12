@@ -29,11 +29,12 @@ These guides walk you through some basic operations:
 -   [Look up an already-stored bag in the storage service](howto/look-up-a-bag.md)
 -   [Look up the versions of a bag in the storage service](howto/look-up-versions-of-a-bag.md)
 
-You can read the [API reference] for more detailed information about how to use the storage service.
+You can read the [API reference](developers/api-reference.md) for more detailed information about how to use the storage service.
 
 Once you're comfortable storing individual bags, you can read about more advanced topics:
 
 -   [Storing multiple versions of the same bag]
+-   [Sending a partial update to a bag]
 -   [Storing preservation and access copies in different storage classes]
 -   [Reporting on the contents of the storage service]
 -   [Getting callback notifications from the storage service]
@@ -55,12 +56,15 @@ These topics explain how the storage service work, and why it's designed in the 
 -   [How bags are verified]
 -   [Compressed vs uncompressed bags, and the choice of tar.gz]
 
+We also have the [storage service RFC](https://github.com/wellcomecollection/docs/tree/main/rfcs/002-archival_storage), the original design document -- although this isn't actively updated, and some of the details have changed in the implementation.
+
 
 
 ## Developer information
 
 These topics are useful for a developer looking to modify or extend the storage service:
 
+-   [An API reference for the user-facing storage service APIs](developers/api-reference.md)
 -   [Key technologies](developers/key-technologies.md)
 -   [Repository layout](developers/repository-layout.md)
 -   [Adding support for another replica location (e.g. Google Cloud)]

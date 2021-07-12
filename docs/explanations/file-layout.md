@@ -6,6 +6,8 @@ Our files will outlive any particular software stack (including the storage serv
 Within each storage location (Amazon S3 bucket, Azure Blob container), we group bags into related "spaces" of content.
 Within each space, bags are further grouped by "external identifier", and then each version of a bag is in a versioned prefix.
 
+Although bags are uploaded as compressed archives, they are stored as unpacked files:
+
 ```
 │
 ├── born-digital/
@@ -73,3 +75,25 @@ This keeps the storage service simple, and makes it easier to compare two locati
 -   Because we replicate an identical file layout to every storage provider, we have to use keys that are valid in every storage provider simultaneously.
 
     i.e. every key we use has to be a valid S3 key and a valid Azure Blob name.
+
+## Compression
+
+Although bags are uploaded as compressed archives, they are stored as unpacked files.
+We took this approach for several reasons:
+
+-   It mirrored the structure of our previous storage repository.
+
+-   Ingesting compressed bags means we can pass them around atomically until they get ingested by the storage service.
+    We don't have to worry about a bag changing midway through an ingest.
+
+-   Most of our bags are digitised content -- a collection of medium-sized images (a few MB each) and a single metadata file.
+    For both humans and automated systems, it's useful to be able to retrieve individual images, and this is easier if the bags are stored as unpacked files.
+
+-   Because the storage service doesn't do any processing of the bag beyond removing the top level of compression, you can still store a compressed archive by wrapping it within another bag:
+
+    ```
+    ├── bagit.txt
+    ├── bag-info.txt
+    └── data/
+          └── compressed_files.zip
+    ```

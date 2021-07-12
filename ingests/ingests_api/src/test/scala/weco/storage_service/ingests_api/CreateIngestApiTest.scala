@@ -82,7 +82,7 @@ class CreateIngestApiTest
             retrievedIngest.callback.isDefined shouldBe true
             retrievedIngest.callback.get.url shouldBe testCallbackUri.toString
             retrievedIngest.callback.get.status.get shouldBe DisplayStatus(
-              "processing"
+              "pending"
             )
 
             retrievedIngest.ingestType shouldBe CreateDisplayIngestType

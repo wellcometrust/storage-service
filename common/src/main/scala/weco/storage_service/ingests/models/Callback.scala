@@ -17,19 +17,15 @@ case object Callback {
     callbackUri.map(Callback(_))
   }
 
-  private val processingString = "processing"
-  private val succeededString = "succeeded"
-  private val failedString = "failed"
-
   case object Pending extends CallbackStatus {
-    override def toString: String = processingString
+    override def toString: String = "pending"
   }
 
   case object Succeeded extends CallbackStatus {
-    override def toString: String = succeededString
+    override def toString: String = "succeeded"
   }
 
   case object Failed extends CallbackStatus {
-    override def toString: String = failedString
+    override def toString: String = "failed"
   }
 }
